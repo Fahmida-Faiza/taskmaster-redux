@@ -17,7 +17,10 @@ export const createUser= createAsyncThunk(
   async ({email, password}) => {
   const data = await createUserWithEmailAndPassword(auth , email, password)
 console.log(data)
-  return;
+  return{
+    email: data.uset.email,
+    name: data.user.displayName,
+  }
 }
 );
 
