@@ -30,7 +30,8 @@ const dispatch = useDispatch()
     console.log(name, email, password);
     dispatch(createUser({
       email,
-      password
+      password,
+      name
     }))
   };
 
