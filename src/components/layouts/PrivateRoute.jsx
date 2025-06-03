@@ -2,7 +2,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import Loading from './Loading';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { setUser } from '../../redux/features/user/userSlice';
+import { setUser, toggleLoading } from '../../redux/features/user/userSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import auth from '../../utils/firebase.config';
 
@@ -21,7 +21,12 @@ const PrivateRoute = ({ children }) => {
           name: user.displayName,
           email:user.email,
         })
-      )
+      );
+      dispatch(toggleLoading(false));
+
+      } else{
+              dispatch(toggleLoading(false));
+
       }
     })
   }, [])
